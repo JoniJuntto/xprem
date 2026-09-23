@@ -334,10 +334,6 @@ export default class Publish extends Command {
       uploadFilesSpinner.fail('No files to upload');
       process.exit(1);
     }
-    // --platform all still looks up a runtime for every platform. expo export
-    // may only write one, like when app.json has "platforms": ["android"].
-    // Requesting upload URLs for a platform with no launch asset makes the
-    // server reject the whole Promise.all.
     const platformsToUpload: typeof runtimeVersions = [];
     const missingBundlePlatforms: string[] = [];
     for (const runtime of runtimeVersions) {
